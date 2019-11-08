@@ -9,4 +9,5 @@ _és most __kombinálom__ a kettőt_
 
 
 
-Aki ezt az üzenetet megtalálja az kap csokit!
+Beleszreksztettem a redme fileba, hogy látni lehessen hogy működik a verzióköveés.
+Olyan mint a track changes csak ez jó.
