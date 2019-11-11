@@ -1,11 +1,8 @@
-# PDF = Probablibility Distribution Function
+#  Helper functions for the normalisation
 #
-# olyan fuggvenyek vannak itt, amivel ki lehet szamolni haranggorbek metszespontjait egymassal, horizontalis egyenesekkel, es van egy 
-# specialis eloszlas, ahol egy normalis es egy uniform eloszlas konvoluciojabol kaphato.
 
 
-
-# it is the pdf (probablibility distribution function) aof a special distribution:
+# it is the pdf (probablibility distribution function) of a special distribution:
 # a combination of uniform distribution and a normal distribution.
 # there is a plateau of the pdf. Th pl parameter is the length of the plateau.
 mixDistributipnPdf <- function(x,mu, sigma,pl)
@@ -30,11 +27,6 @@ mixDistributipnPdf <- function(x,mu, sigma,pl)
  
 	return(p)
 }
-
-#x <- seq(-10,10,by=0.01)
-#y <- mixDistributipnPdf(x, mu=0,sigma=0.2,pl=4)
-#plot(x,y, cex=0.1)
-#mean(y)*20
 
 
 
@@ -158,7 +150,7 @@ calculate_intersections_of_gaus_and_mixed_curves <- function(mu1,mu2,sigma1,sigm
 }
 
 
-##
+##Example:
 ##
 ##mu1=0
 ##mu2=2
