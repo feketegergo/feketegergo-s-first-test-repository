@@ -1,13 +1,19 @@
-# feketegergo-s-first-test-repository
-I want to test how does the github works.
+# Kintses-et-al-AMP-Chemogenomics-NatComm
+Code deposited for paper "Chemical-genetic profiling reveals limited cross-resistance between antimicrobial peptides with different modes of action", Kintses et al. Nature Communications
 
 
-Ok, most kiróbálom hogyan tudom a Readme filet Szerkeszteni. 
-__Ez itt bold__ _ez meg italic_ 
-
-_és most __kombinálom__ a kettőt_
-
-
-
-Beleszreksztettem a redme fileba, hogy látni lehessen hogy működik a verzióköveés.
-Olyan mint a track changes csak ez jó.
+__data folder__
+  It contains the input files of the scripts 
+ * _data/dataTable1-expression_values_of_sequencing.csv_ - this file contains the expression values from the sequencing
+ * _data/batch-structure.csv_ - this table describes which data coluns comes from the same assay
+   all the internediate data tales will be placed here.
+ 
+ __script folder__
+ It contains the R source files of the program.
+* _script/cg01_RemoveBackground.R_  
+* _script/cg02_rescaleData.R_
+* _script/cg03_plotsOfDataAfterBgRemoveAndRescale.R_ Generates figures to visualise data grouped by treatments It is not needed for the further analisys.
+* _script/cg04_plotRawBarplotsForEachLine.R_ Generates figures to visualise data grouped by genes. It is not needed for the further analisys.
+* _script/cg05_normalizationOfBimodalDist.R_ Normalise data
+* _script/functions-for-chemogenomic-project.R_ contains some helper functions.
+* _script/pdfTools.R_ contains some more special helper functions for the normalisation.
