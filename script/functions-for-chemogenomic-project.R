@@ -1,11 +1,7 @@
-## Ez a file tartalmazza a felhasznalt segedfuggvenyeket.
-## Ezeket atraktam kulon fileba, hogy �gy atlathatobb legyen a kod
-##
-## Ezt a filet nem kell kulon lefuttatni. Aminek szuksege van ra, az behivatjkozza. 
+## file of helper functions
 
 
-# fuggveny, ami megbecsli az adatok eloszlasanak a modusat
-# "azt a pontot, ahol a legmagasabb a histogram"
+
 estimate_mode <- function(x) {
 	x<-x[is.finite(x)]
 	d <- density(x)
@@ -13,20 +9,13 @@ estimate_mode <- function(x) {
 }
 
 
-# A fuggvenyt arra talaltam ki, hogy a tablazat oszlopait ertelmes sorrendbe rendezze.
-# az orig.names-be kell tenni egy string listat, pl. names(df1)-et
-# A key.list parameterbe egy stringekbol, illetve regexp pattern-ekbol allo vektor vagy lista kerul.
-# A retun value ugyanazt tartalmazza mint az orig.names, csak atrendezve.
-# Legelore veszi azokat, amik a key.list-ben az elso helyen vannak, aztan amik a masodik helyen vannak, stb.  
+# this function is designed for rorder data coluns. The key.list gives regexp pattarns, and 
+# the return value will be ordered that tha firsts match to the regexp
 my.order<-function(orig.names, key.list)
 {
-#	orig.names=n2;
-#	key.list=c("background", "t0", "t1")
-#	pattern="background"
-	
+
 	reordered.names=c();
 	for(pattern in key.list){
-#		print(pattern)
 		idx=grepl(pattern, orig.names)
 		reordered.names=c(reordered.names,orig.names[idx])
 		orig.names=orig.names[!idx]
@@ -39,9 +28,12 @@ my.order<-function(orig.names, key.list)
 
 
 
-#Ez a fuggveny egy lm() fuggveny altal megadott linearis model egyenesere tud rairni szoveget
-# ugy, hogy kiszamolja a megfelelo szoget es y koordinatat. (Az x koordinatat meg kell neki adni)
+
+# this function can write a text pon a plot aligned to a line,
+# the line is givver by the lm1 parameter, what is tha result of the lm() function. 
+# The x is in parameter. The y and the angle is calculated automaticly. The rest of the parameters are forwarded to the text() function
 #
+# example:
 # tex.on.line(lm1=lm1,x=5.3,labels="svalamiss")
 tex.on.line<-function(lm1, x, ...){
 
@@ -54,7 +46,7 @@ tex.on.line<-function(lm1, x, ...){
 }
 
 
-# text kiir�sa abrara, ugy hogy kap egy kis arnyekot, igy jobban olvashato
+# writes text with a little shadow. It is easier to read on the plot.
 shadowtext <- function(x, y=NULL, labels, col='white', bg='black',
 		theta= seq(pi/4, 2*pi, length.out=8), r=0.1, ... ) {
 	
@@ -72,12 +64,12 @@ shadowtext <- function(x, y=NULL, labels, col='white', bg='black',
 
 
 
-# ez egy olyan fuggveny, ami a treshold folott logaritmus, alatta linearis, 
-# es az illeszkedesi pontban pont folytonos es derivalhato
+# mixture of log and  linear function.
+# if x> treshold then it is a log,
+# if x<= treshold the it is a linear function. 
+# The slope and y parameters of the linear parts are determined to be smooth at the treshold.
 log10LinearHybrid<-function(x, treshold=1e-4){
-#x= rnorm(15)
-#treshold=0.1
-	
+
 	idx<-(x>treshold)
 	
 	x[idx]<-log10(x[idx])
@@ -87,10 +79,8 @@ log10LinearHybrid<-function(x, treshold=1e-4){
 	return(x)
 }
 
-#inverz fuggvenye a log10LinearHybrid()-nek
+#inverse oflog10LinearHybrid()-
 exp10LinearHybrid<-function(y, treshold=1e-4){
-#x= rnorm(15)
-#treshold=0.1
 	treshold2<-log10(treshold)
 	
 	idx<-(y>treshold2)
@@ -100,7 +90,7 @@ exp10LinearHybrid<-function(y, treshold=1e-4){
 	# y= a*x+b
 	# y= 1/(treshold*log(10)) * x + (log(treshold)-1)/ log(10)
 	#
-	#inverz:
+	#inverse:
 	# x= (y-b)/a
 	# x= (y - (log(treshold)-1)/ log(10))*treshold*log(10)
 	# x= ( y*log(10)  - (log(treshold)-1) ) * treshold
@@ -110,25 +100,14 @@ exp10LinearHybrid<-function(y, treshold=1e-4){
 	
 	return(y)
 }
-#
-#
-#treshold=1e-5
-#x=seq(from=-5, to=30, length.out=100	 )
-#y=exp10LinearHybrid(log10LinearHybrid(x,treshold), treshold )
-#
-#sum(x!=y)
-#plot(x,y, cex=0.2)
-#plot(x,log10LinearHybrid(x,treshold), cex=0.2)
-#exp10LinearHybrid(-4.3)
 
-
-
-# a log10LinearHibrid fuggvenyleg tovabbonyolitasa.
-# a treshold-hal nagyobb szamok eseten sima log10()
-# a [-treshold,+treshold] intervallumon linearis, ugy hogy folytonosan es derivalhatoan csatlakozik a log10()-hez
-# -treshold alatt pedig log10(-x) alak� �gy eltolva lefele, hogy folytonosan es diferencialhatoan csatlakozzon a linearis reszhez.
+# 
+# if x > treshold then it is a log10(x)
+# if x in [-treshold,+treshold] then it is linear
+# if x < -treshold then it is a shifted version log10(-x)
+# the function s smooth at both  x=treshold and x=-treshold position.
 #
-# nincs az a nyavaly�ja, hogy �r�lt nagy negat�v sz�mokat kapunk negat�v �rt�kekre.
+# It does not results hough negative values at negative numbers like the log10LinearHybrid()
 myLog10LinearHybrid<-function(x, treshold=10^-4.5)
 {
 	#value.at.0<-(log(treshold)-1)/ log(10)
@@ -167,7 +146,7 @@ myExp10LinearHybrid<-function(y, treshold=10^-4.5){
 	# y= a*x+b
 	# y= 1/(treshold*log(10)) * x + (log(treshold)-1)/ log(10)
 	#
-	#inverz:
+	#inverse:
 	# x= (y-b)/a
 	# x= (y - (log(treshold)-1)/ log(10))*treshold*log(10)
 	# x= ( y*log(10)  - (log(treshold)-1) ) * treshold
