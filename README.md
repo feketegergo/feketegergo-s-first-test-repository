@@ -16,7 +16,7 @@ The programs are written in R.
 
 __data folder__
  * It contains the input files of the scripts 
- * _data/dataTable1-expression_values_of_sequencing.csv_ - this file contains the expression values from the sequencing
+ * _data/dataTable1-expression_values_of_sequencing.csv_ - this file contains the read numbers from the sequencing
  * _data/batch-structure.csv_ - this table describes which data columns come from the same assay
  * all the intermediate data tables will be placed here.
  
