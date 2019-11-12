@@ -1,4 +1,3 @@
-
 rm(list=ls())
 
 source(file="script/functions-for-chemogenomic-project.R");
@@ -198,8 +197,8 @@ for(col1 in names(M1)){
 	
 #	par(mfrow=c(5,2))
 	
-	#  parameter c determine the shift of the first mode
-	#  parameter d determine the shift of the second mode
+	#  parameter c determines the shift of the first mode
+	#  parameter d determines the shift of the second mode
 	
 	pc<-0
 	pd<-0

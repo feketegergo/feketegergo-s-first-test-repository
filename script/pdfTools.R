@@ -2,7 +2,7 @@
 #
 
 
-# it is the pdf (probablibility distribution function) of a special distribution:
+# it is the pdf (probability distribution function) of a special distribution:
 # a combination of uniform distribution and a normal distribution.
 # there is a plateau of the pdf. Th pl parameter is the length of the plateau.
 mixDistributipnPdf <- function(x,mu, sigma,pl)
@@ -33,9 +33,9 @@ mixDistributipnPdf <- function(x,mu, sigma,pl)
 # We have two bell curve and we want to calculate the intersectionpoint
 calculate.intersections.of.gaus.curves <- function(mu1,mu2,sigma1,sigma2,q1,q2)
 {
-#	 We need to solve the next equalsation for x. All of the other parameters are known.
+#	 We need to solve the next equalisation for x. All of the other parameters are known.
 #	
-#	This is the formula of the pdf of normal diistribution
+#	This is the formula of the pdf of normal distribution
 #	
 #	q1*exp( - (x-mu1)^2/(2*sigma1^2) ) / sigma1 = q2*exp( - (x-mu2)^2/(2*sigma2^2) ) / sigma2
 #	
@@ -54,7 +54,7 @@ calculate.intersections.of.gaus.curves <- function(mu1,mu2,sigma1,sigma2,q1,q2)
 #	+ (-2*mu1*sigma2^2 + 2*mu2*sigma1^2) * x
 #	+ mu1^2*sigma2^2 - mu2^2*sigma1^2 - (log(sigma2) - log(sigma1) + log(q1) - log(q2) ) * (2*sigma1^2*sigma2^2) = 0 
 #	
-#   OK, ez mar egy masodfoku egyenlet. Beirhatom amegoldokepletbe.	
+#   Now it is a  quadratic equation. I can use the formula of the roots	
 	
 	
 	A <- (sigma2^2 - sigma1^2)

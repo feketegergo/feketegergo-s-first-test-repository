@@ -171,7 +171,7 @@ rm(alpha1, lacI.in.background,i, walls1,ticks1)
 rm(M1)
 
 ############################################################################################
-# I am generating figures of the after corrction status
+# I am generating figures of the after correction status
 
 graphics.off()
 
@@ -217,5 +217,3 @@ rm(cs1,cs2,lacI.values,lacZ.values,mx,out.dir1, walls1)
 
 
 write.table(M2, file="data/dataTable2-afterBackgroundRemove.csv",sep=",",quote = FALSE,row.names=TRUE, col.names=NA)
-
-

@@ -9,8 +9,8 @@ estimate_mode <- function(x) {
 }
 
 
-# this function is designed for rorder data coluns. The key.list gives regexp pattarns, and 
-# the return value will be ordered that tha firsts match to the regexp
+# this function is designed for reorder data columns. The key.list gives regexp pattarns, and 
+# the return value will be ordered that the firsts match to the regexp
 my.order<-function(orig.names, key.list)
 {
 
@@ -29,9 +29,9 @@ my.order<-function(orig.names, key.list)
 
 
 
-# this function can write a text pon a plot aligned to a line,
-# the line is givver by the lm1 parameter, what is tha result of the lm() function. 
-# The x is in parameter. The y and the angle is calculated automaticly. The rest of the parameters are forwarded to the text() function
+# this function can write a text upon a plot aligned to a line,
+# the line is givver by the lm1 parameter, what is the result of the lm() function. 
+# The x is in parameter. The y and the angle is calculated automatically. The rest of the parameters are forwarded to the text() function
 #
 # example:
 # tex.on.line(lm1=lm1,x=5.3,labels="svalamiss")
@@ -64,7 +64,7 @@ shadowtext <- function(x, y=NULL, labels, col='white', bg='black',
 
 
 
-# mixture of log and  linear function.
+# mixture of log and linear function.
 # if x> treshold then it is a log,
 # if x<= treshold the it is a linear function. 
 # The slope and y parameters of the linear parts are determined to be smooth at the treshold.
@@ -107,7 +107,7 @@ exp10LinearHybrid<-function(y, treshold=1e-4){
 # if x < -treshold then it is a shifted version log10(-x)
 # the function s smooth at both  x=treshold and x=-treshold position.
 #
-# It does not results hough negative values at negative numbers like the log10LinearHybrid()
+# It does not result huge negative values at negative numbers like the log10LinearHybrid()
 myLog10LinearHybrid<-function(x, treshold=10^-4.5)
 {
 	#value.at.0<-(log(treshold)-1)/ log(10)
@@ -156,5 +156,3 @@ myExp10LinearHybrid<-function(y, treshold=10^-4.5){
 
 	return(y)
 }
-
-
