@@ -1,10 +1,9 @@
-
 rm(list=ls())
 M1=read.csv(file="data/dataTable2-afterBackgroundRemove.csv",sep=",",row.names=1)
 
 
 
-# remove rows of lacI and LacZ  (These are parts of inducion casette.  Each plasmid contains them.)
+# remove rows of lacI and LacZ  (These are parts of induction casette.  Each plasmid contains them.)
 M2<-M1[rownames(M1)!="lacI" & rownames(M1)!="lacZ",] 
 
 # scale each column to sum=1
