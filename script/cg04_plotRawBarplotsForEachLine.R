@@ -13,7 +13,7 @@ source("script/functions-for-chemogenomic-project.R");
 
 batch.df <- read.csv(file="data/batch-structure.csv",sep=",")
 
-M0=read.csv(file="data/dataTable1-expression_values_of_sequencing.csv",sep="," )
+M0=read.csv(file="data/dataTable1-read_numbers_of_sequencing.csv",sep="," )
 rownames(M0)<-M0$Feature_ID
 names(M0)<-sapply(names(M0), FUN=function(x)  sprintf("%s_B%i",x, batch.df$batch.num[ batch.df$cname==x]))
 
