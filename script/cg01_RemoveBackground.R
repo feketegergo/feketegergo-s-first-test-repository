@@ -6,8 +6,8 @@ rm(list=ls())
 source("script/functions-for-chemogenomic-project.R");
 
 #####################################
-# loading expression values 
-M1=read.csv(file="data/dataTable1-expression_values_of_sequencing.csv",sep=",")
+# loading read numbers
+M1=read.csv(file="data/dataTable1-read_numbers_of_sequencing.csv",sep=",")
 rownames(M1)<-M1$Feature_ID
 
 # batch structure describes witch data coluns are coming from the same assay
